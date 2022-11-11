@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
       <div className="container">
-     <div className="add_btn mt-2">
+     <div className="add_btn mt-2 mb-2">
       <button className="btn btn-primary">Add data</button>
       </div> 
       <table className="table">
@@ -26,9 +26,9 @@ const Home = () => {
       <td>Webdeveloper</td>
       <td>1234567890</td>
       <td className="d-flex justify-content-between">
-        <button className="btn btn-success">read</button>
-        <button className="btn btn-primary">update</button>
-        <button className="btn btn-warning">Delete</button>
+        <button className="btn btn-success"><i class="fa-solid fa-eye"></i></button>
+        <button className="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button className="btn btn-warning"><i class="fa-solid fa-trash"></i></button>
       </td>
     </tr>
     <tr>
