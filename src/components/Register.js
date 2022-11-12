@@ -24,10 +24,40 @@ const Register = () => {
     })
   }
 
+  const addinpdata = async (e) => {
+    e.preventDefault();
+
+    const { name, email, work, add, mobile, desc, age } = inpval;
+
+    const res = await fetch("http://localhost:8003/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name, email, work, add, mobile, desc, age
+        })
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (res.status === 404 || !data) {
+        console.log("error ");
+        alert("error");
+
+    } else {
+        // history.push("/")
+        // setUdata(data)
+        console.log("data added");
+
+    }
+}
+
   return (
     <div className='container'>
   <NavLink to='/'>home</NavLink>   
-  <form className='mt-5'>
+  <form action="" method='post' className='mt-5'>
     <div className="row">
       
     
@@ -37,8 +67,8 @@ const Register = () => {
   </div>
   <div className="mb-3 col-lg-6 col-md-6 col-12">
     <label className="form-label">email</label>
-    <input type="email" className="form-control" />
-    <div id="emailHelp" name="email" onChange={setdata} value={inpval.email} className="form-text">We'll never share your email with anyone else.</div>
+    <input type="email" name="email" onChange={setdata} value={inpval.email} className="form-control" />
+    <div id="emailHelp"  className="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div className="mb-3 col-lg-6 col-md-6 col-12">
     <label className="form-label">age</label>
@@ -60,7 +90,7 @@ const Register = () => {
     <label className="form-label">Description</label>
     <textarea type='text' onChange={setdata} value={inpval.desc} name='desc' className="form-control" id="" cols="30" rows="10"></textarea>
   </div>
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" onClick={addinpdata} className="btn btn-primary">Submit</button>
   </div>
 </form>   
 
