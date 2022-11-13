@@ -1,11 +1,48 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+
+import {NavLink} from 'react-router-dom'
+
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const Home = () => {
+
+  const [getuserdata, setUserdata] = useState([""])
+  const getdata = async (e) => {
+  
+  
+    const res = await fetch("http://localhost:8003/getdata", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+      
+    });
+  
+    const data = await res.json();
+    console.log(data);
+  
+    if (res.status === 404 || !data) {
+        console.log("error ");
+        alert("error");
+  
+    } else {
+      setUserdata(data)
+        console.log("getdata")
+  
+    }
+  }
+
+  useEffect(() => {
+    getdata();
+  },[])
+
   return (
     <div>
       <div className="container">
      <div className="add_btn mt-2 mb-2">
-      <button className="btn btn-primary">Add data</button>
+      <NavLink className="btn btn-primary" to='/register'>Add data</NavLink>
       </div> 
       <table className="table">
   <thead>
@@ -19,29 +56,32 @@ const Home = () => {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto@mark.com</td>
-      <td>Webdeveloper</td>
-      <td>1234567890</td>
+    {
+      getuserdata.map((e, id) => {
+        return (
+          <>
+           <tr>
+      <th scope="row">{id + 1}</th>
+      <td>{e.name? e.name:<Backdrop
+  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+  open
+>
+  <CircularProgress color="inherit" />
+</Backdrop>}</td>
+      <td>{e.email? e.email: 'Loading...'}</td>
+      <td>{e.work? e.work: 'Loading...'}</td>
+      <td>{e.mobile? e.mobile: 'Loading...'}</td>
       <td className="d-flex justify-content-between">
-        <button className="btn btn-success"><i class="fa-solid fa-eye"></i></button>
-        <button className="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button className="btn btn-warning"><i class="fa-solid fa-trash"></i></button>
+        <button className="btn btn-success"><i className="fa-solid fa-eye"></i></button>
+        <button className="btn btn-primary"><i className="fa-solid fa-pen-to-square"></i></button>
+        <button className="btn btn-warning"><i className="fa-solid fa-trash"></i></button>
       </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colSpan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+          </>
+        )
+      })
+    }
+   
   </tbody>
 </table>
       </div>
