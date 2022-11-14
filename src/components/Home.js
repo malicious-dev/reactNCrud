@@ -72,7 +72,7 @@ const Home = () => {
       <td>{e.work? e.work: 'Loading...'}</td>
       <td>{e.mobile? e.mobile: 'Loading...'}</td>
       <td className="d-flex justify-content-between">
-        <button className="btn btn-success"><i className="fa-solid fa-eye"></i></button>
+        <NavLink to={`view/${e._id}`} className="btn btn-success"><i className="fa-solid fa-eye"></i></NavLink>
         <button className="btn btn-primary"><i className="fa-solid fa-pen-to-square"></i></button>
         <button className="btn btn-warning"><i className="fa-solid fa-trash"></i></button>
       </td>
