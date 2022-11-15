@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
 import {NavLink} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
+    
 
   const [inpval, setINP] = useState({
     name: '',
@@ -40,27 +43,43 @@ const Register = () => {
     });
 
     const data = await res.json();
-    console.log(data);
-
-    if (res.status === 404 || !data) {
-        console.log("error ");
-        alert("error");
+    
+    if (res.status === 200) {
+      toast.warn("successfully created", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
 
     } else {
-        // history.push("/")
-        // setUdata(data)
-        console.log("data added");
+      toast.warn(data, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
 
     }
 }
 
   return (
     <div className='container'>
+        <ToastContainer />
+
   <NavLink to='/'>home</NavLink>   
-  <form action="" method='post' className='mt-5'>
+  <form action="/" method='post' className='mt-5'>
     <div className="row">
       
-    
+
   <div className="mb-3 col-lg-6 col-md-6 col-12">
     <label className="form-label">Name</label>
     <input type="text" name="name" onChange={setdata} value={inpval.name} className="form-control" aria-describedby="emailHelp" />

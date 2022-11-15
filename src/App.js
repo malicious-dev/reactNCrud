@@ -7,6 +7,7 @@ import Home from'./components/Home'
 import Register from'./components/Register';
 import Edit from './components/Edit'
 import View from './components/View'
+import Delete from './components/Delete'
 import {Routes, Route} from 'react-router-dom'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   <Route exact path="/register" element={<Register />} />
   <Route exact path="/edit/:id" element={<Edit />} />
   <Route exact path="/view/:id" element={<View />} />
+  <Route exact path="/delete/:id" element={<Delete />} />
 </Routes>
    </>
   );
