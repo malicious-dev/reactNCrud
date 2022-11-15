@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     
-
+  const navigate = useNavigate();
+  
   const [inpval, setINP] = useState({
     name: '',
     email: '',
@@ -45,7 +46,7 @@ const Register = () => {
     const data = await res.json();
     
     if (res.status === 200) {
-      toast.warn("successfully created", {
+      toast.success("successfully created",  navigate("/"), {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
