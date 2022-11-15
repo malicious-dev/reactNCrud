@@ -11,7 +11,7 @@ const View = () => {
 
   
   
-    const res = await fetch(`http://localhost:8003/users/${id}`, {
+    const res = await fetch(`/users/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
