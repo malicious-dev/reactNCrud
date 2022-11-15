@@ -52,7 +52,7 @@ const Home = () => {
     const data = await res.json();
   
     if (res.status === 404) {
-      toast.success(data, {
+      toast.warn(data, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
