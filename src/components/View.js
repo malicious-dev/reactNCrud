@@ -11,7 +11,7 @@ const View = () => {
 
   
   
-    const res = await fetch(`/users/${id}`, {
+    const res = await fetch(`https://crudnodej.herokuapp.com/users/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"

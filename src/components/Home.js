@@ -12,7 +12,7 @@ const Home = () => {
   const getdata = async (e) => {
   
   
-    const res = await fetch("http://localhost:8003/getdata", {
+    const res = await fetch("https://crudnodej.herokuapp.com/getdata", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -41,7 +41,7 @@ const Home = () => {
   const deleteuser = async (id) => {
   
   
-    const res = await fetch(`http://localhost:8003/delete/${id}`, {
+    const res = await fetch(`https://crudnodej.herokuapp.com/delete/${id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

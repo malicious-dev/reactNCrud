@@ -40,7 +40,7 @@ const Edit = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:8003/users/${id}`, {
+        const res = await fetch(`https://crudnodej.herokuapp.com/users/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -70,7 +70,7 @@ const Edit = () => {
 
         const {name,email,work,add,mobile,desc,age} = inpval;
 
-        const res2 = await fetch(`http://localhost:8003/updateuser/${id}`,{
+        const res2 = await fetch(`https://crudnodej.herokuapp.com/updateuser/${id}`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
