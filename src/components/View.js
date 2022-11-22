@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const View = () => {
 
@@ -43,8 +45,13 @@ const View = () => {
     <div className="col-md-8">
       <div className="card-body">
         <h5 className="card-title">Profile</h5>
-        <p className="card-text">{getuserdata.name}</p>
-        <p className="card-text">{getuserdata.email}</p>
+        <p className="card-text">{getuserdata.name? getuserdata.name : "Loading..."}</p>
+        <p className="card-text">{getuserdata.email? getuserdata.email :  <Backdrop
+  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+  open
+>
+  <CircularProgress color="inherit" />
+</Backdrop>}</p>
         <p className="card-text">{getuserdata.age}</p>
         <p className="card-text">{getuserdata.mobile}</p>
         <p className="card-text">{getuserdata.work}</p>
